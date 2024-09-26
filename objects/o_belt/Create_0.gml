@@ -1,2 +1,2 @@
 empty = true;
-dir = 0;
+dir = 90;
