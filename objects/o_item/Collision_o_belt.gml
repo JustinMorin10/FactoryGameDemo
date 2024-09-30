@@ -20,7 +20,7 @@ if state == 0
 	}
 	if input != noone // if the next input exists in the direction
 	{
-		switch input.object_index
+		switch input.object_index // check which input object is adjacent
 		{
 			case o_belt:
 				if place_empty(input.x,input.y,o_item) == true // and the next input pos does not have an item there
@@ -29,14 +29,12 @@ if state == 0
 					old_belt = other
 					new_point_x = input.x;
 					new_point_y = input.y;
-					move_towards_point(new_point_x, new_point_y, .5);
+					move_towards_point(new_point_x, new_point_y, input.belt_spd);
 					state = 1;
 				}
 				break;
 			case o_storage:
-					input.qty += 1;
-					other.empty = true;
-					instance_destroy(self)
+					CheckAndPlaceStorage(); // check if storage is available, if there is deposit
 				break;	
 		}
 	}

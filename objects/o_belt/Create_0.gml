@@ -1,3 +1,4 @@
 empty = true;
 dir = 0;
-dir3 = 3
+belt_spd = 1;
+image_index = o_game.belt_index;
