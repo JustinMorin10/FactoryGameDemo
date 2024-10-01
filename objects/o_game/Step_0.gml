@@ -6,6 +6,7 @@
 var place = mouse_check_button_pressed(mb_left);
 var spawn_worker = mouse_check_button_pressed(mb_right);
 var rotate = keyboard_check_pressed(ord("Q"));
+var deleteLastBelt = keyboard_check_pressed(vk_delete);
 
 place_x = (floor(mouse_x / grid_size) * grid_size) + (grid_size/2);
 place_y = (floor(mouse_y / grid_size) * grid_size) + (grid_size/2);
@@ -32,6 +33,21 @@ if rotate
 	// belt_dir += 90;
 }
 
+if deleteLastBelt
+{
+    // Check if there is a belt instance at the mouse position
+    var belt = instance_position(place_x, place_y, o_belt);
+    
+    if belt != noone
+    {
+        // If a belt is found, destroy it
+        with(belt)
+        {
+            instance_destroy();
+        }
+    }
+
+}
 if place 
 {
 	var px = place_x;
