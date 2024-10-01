@@ -1,6 +1,6 @@
 isempty = instance_place(x+32, y,o_item);
 
-if mine_counter > game_get_speed(gamespeed_fps)
+if mine_counter > mine_interval
 {
 	if isempty == noone
 	{
@@ -12,3 +12,5 @@ if mine_counter > game_get_speed(gamespeed_fps)
 	mine_counter += mine_speed;
 }
  
+
+mine_counter_pc = (mine_counter / mine_interval) * 100;

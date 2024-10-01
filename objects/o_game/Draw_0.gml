@@ -1,1 +1,1 @@
-draw_sprite_ext(s_belt, 0, place_x, place_y, 1, 1, belt_dir, c_white, .2)
+draw_sprite_ext(s_belt, belt_index, place_x, place_y, 1, 1, belt_dir, c_white, .2)

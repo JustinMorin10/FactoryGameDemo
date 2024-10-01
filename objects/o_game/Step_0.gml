@@ -4,6 +4,7 @@
 // right click to remove?? maybe
 
 var place = mouse_check_button_pressed(mb_left);
+var spawn_worker = mouse_check_button_pressed(mb_right);
 var rotate = keyboard_check_pressed(ord("Q"));
 
 place_x = (floor(mouse_x / grid_size) * grid_size) + (grid_size/2);
@@ -31,11 +32,25 @@ if rotate
 	// belt_dir += 90;
 }
 
-if place
+if place 
 {
 	var px = place_x;
 	var py = place_y;
-	var new_belt = instance_create_depth(place_x,place_y,0,o_belt);
-	new_belt.dir = belt_dir; // we can set the direction here
-	new_belt.image_angle = belt_dir;
+	var pe = !instance_position(mouse_x, mouse_y, [o_belt,o_mine,o_storage])
+	if pe == true {
+		var new_belt = instance_create_depth(place_x,place_y,0,o_belt);
+		new_belt.dir = belt_dir; // we can set the direction here
+		new_belt.image_angle = belt_dir;
+	}
+}
+
+if spawn_worker
+{
+	instance_create_depth(mouse_x,mouse_y,0,o_worker);	
+}
+
+belt_index += 1;
+if belt_index == 16
+{
+	belt_index = 0
 }
